@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!--<script src="http://www.corsproxy.com/spreadsheets.google.com/feeds/list/1d__Mnshweud84zEuamDmTWljojQNFC2SHWTZ_GB0L9A/od6/public/values?alt=json"></script>-->
+
+	<script type="text/javascript">
+		$( document ).ready(function() {
+   			 console.log( "ready!" );
+   			 $.getJSON('https://spreadsheets.google.com/feeds/list/1d__Mnshweud84zEuamDmTWljojQNFC2SHWTZ_GB0L9A/od6/public/values?alt=json',function(data){ console.log(data);
+   			 	lengthofArray = data.feed.entry.length;
+   			 	for (i = 0; i < lengthofArray; i++) { 
+    				console.log(data.feed.entry[i]['gsx$state']['$t']);
+				}
+   			 	 
+   			 });
+		});
+		
+	</script>
+	<!--
+	<script type="text/javascript">
+		$.ready() {
+			$.getJSON("https://spreadsheets.google.com/feeds/list/1zctYB0XSMD-BBr2nZ7Nz4CpdWB6-mqRzI2OMV4Brx4k/od6/public/values?alt=json-in-script&callback=x", function(data) {
+  				//first row "title" column
+  				console.log(data.feed.entry[0]['gsx$title']['$t']);
+});	
+		}
+		
+	</script>
+	-->
+</html>
