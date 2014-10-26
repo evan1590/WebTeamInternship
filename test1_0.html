@@ -43,7 +43,7 @@
 			  .append("g")
 			    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-   			$.getJSON('https://spreadsheets.google.com/feeds/list/1d__Mnshweud84zEuamDmTWljojQNFC2SHWTZ_GB0L9A/od6/public/values?alt=json',function(data) { 
+   			$.getJSON('https://spreadsheets.google.com/feeds/list/1d__Mnshweud84zEuamDmTWljojQNFC2SHWTZ_GB0L9A/od6/public/values?alt=json', function(data) { 
    			 	console.log(data);
    			 	lengthofArray = data.feed.entry.length;
    			 	for (i = 0; i < lengthofArray; i++) { 
@@ -85,18 +85,10 @@
 <!--
 <script>
 
+Cannot get the graph working. I am moving onto a tutorial that
+teaches you how to use ds. instead of just looking at the 
+Examples and trying to figure out how to use d3 that way. 
 
-
-d3.tsv("data.tsv", type, function(error, data) {
-
-  
-});
-
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
-}
-
-</script>
 http://bl.ocks.org/mbostock/3885304
+http://alignedleft.com/tutorials/d3/setup
 -->
