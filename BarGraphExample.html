@@ -11,7 +11,7 @@
 	<script type="text/javascript">
 		//width and height
 		var svgWidth = 500;
-		var svgHeight = 100;
+		var svgHeight = 500;
 		var barPadding = 1; 
 
 		// Creat SVG element
@@ -41,7 +41,9 @@
 				.attr("x", function(d, i) {
 					return i * (svgWidth / dataset.length); //Bar width of 20 plus 1 for padding
 				})
-				.attr("y", 0)
+				.attr("y", function(d) {
+    				return svgHeight - d;  //Height minus data value
+				})
 				.attr("width", svgWidth / dataset.length - barPadding)
 				.attr("height", function(d) {
 					return d * 4; 
