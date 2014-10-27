@@ -21,6 +21,7 @@
 					.attr("height", svgHeight);
 
 		var dataset = [];
+		var numDone = 0
 		// doing this asynchronously arrrgggggggggggggg! 
 		$.getJSON('https://spreadsheets.google.com/feeds/list/1d__Mnshweud84zEuamDmTWljojQNFC2SHWTZ_GB0L9A/od6/public/values?alt=json', function(data) { 
    			console.log(data);
@@ -31,22 +32,23 @@
    				dataset.push(data.feed.entry[i]['gsx$numberofusers']['$t']);
    				console.log(dataset)
    			};
+   			//console.log(dataset);
+
+			svg.selectAll ("rect")
+				.data(dataset)
+				.enter()
+				.append("rect")
+				.attr("x", function(d, i) {
+					return i * (svgWidth / dataset.length); //Bar width of 20 plus 1 for padding
+				})
+				.attr("y", 0)
+				.attr("width", svgWidth / dataset.length - barPadding)
+				.attr("height", function(d) {
+					return d * 4; 
+				});
    		});
 
-		console.log(dataset);
-
-		svg.selectAll ("rect")
-			.data(dataset)
-			.enter()
-			.append("rect")
-			.attr("x", function(d, i) {
-				return i * (svgWidth / dataset.length); //Bar width of 20 plus 1 for padding
-			})
-			.attr("y", 0)
-			.attr("width", svgWidth / dataset.length - barPadding)
-			.attr("height", function(d) {
-				return d * 4; 
-			});
+		
 
 	</script>
 </html>
