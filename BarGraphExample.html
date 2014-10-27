@@ -1,17 +1,14 @@
 <html>
 	<head>
-	
-	</head>		
-	<body>
-
-	</body>
 	<!-- scripts for jQuery and D3 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<script type="text/javascript">
+	</head>		
+	<body>
+		<script type="text/javascript">
 		//width and height
 		var svgWidth = 500;
-		var svgHeight = 200;
+		var svgHeight = 300;
 		var barPadding = 1; 
 
 		// Creat SVG element
@@ -46,7 +43,7 @@
 				})
 				.attr("width", svgWidth / dataset.length - barPadding)
 				.attr("height", function(d) {
-					return d * 4; 
+					return d; 
 				})
 				.attr("fill", "teal");
 
@@ -58,16 +55,18 @@
         			return d;
    				})
 			   	.attr("x", function(d, i) {
-        			return i * (svgWidth / dataset.length) + (svgWidth / dataset.length - barPadding) / 2;
+        			return i * (svgWidth / dataset.length) + 30;
     			})
    				.attr("y", function(d) {
-       				 return svgHeight - (d * 4) + 14;
+       				 return svgHeight - d + 14;
    				})
    				.attr("font-family", "sans-serif")
    				.attr("font-size", "11px")
-   				.attr("fill", "black")
+   				.attr("fill", "white")
    				.attr("text-anchor", "middle");
    		});
 	</script>
+	</body>
+	
 </html>
 <!-- http://alignedleft.com/tutorials/d3/making-a-bar-chart -->
