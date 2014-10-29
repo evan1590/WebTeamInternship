@@ -16,9 +16,23 @@
 					.append("svg")
 					.attr("width", svgWidth)
 					.attr("height", svgHeight);
+		
+		var x = d3.scale.ordinal()
+			    .rangeRoundBands([0, svgWidth], .1);
 
+		var y = d3.scale.linear()
+		    .range([svgHeight, 0]);
+
+		var xAxis = d3.svg.axis()
+			    .scale(x)
+			    .orient("bottom");
+
+		var yAxis = d3.svg.axis()
+		    .scale(y)
+		    .orient("left")
+		    .ticks(10, "%");
+		
 		var dataset = [];
-		var numDone = 0;
 		// doing this asynchronously arrrgggggggggggggg! 
 		$.getJSON('https://spreadsheets.google.com/feeds/list/1d__Mnshweud84zEuamDmTWljojQNFC2SHWTZ_GB0L9A/od6/public/values?alt=json', function(data) { 
    			console.log(data);
@@ -31,6 +45,21 @@
    			};
    			//console.log(dataset);
 
+   			svg.append("g")
+			      .attr("class", "x axis")
+			      .attr("transform", "translate(0," + svgHeight + ")")
+			      .call(xAxis);
+
+			 svg.append("g")
+			      .attr("class", "y axis")
+			      .call(yAxis)
+			    .append("text")
+			      .attr("transform", "rotate(-90)")
+			      .attr("y", 6)
+			      .attr("dy", ".71em")
+			      .style("text-anchor", "end")
+			      .text("number of users");
+			
 			svg.selectAll ("rect")
 				.data(dataset)
 				.enter()
