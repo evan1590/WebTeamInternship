@@ -7,10 +7,13 @@
 	<body>
 		<script type="text/javascript">
 		//width and height
-		var svgWidth = 500;
-		var svgHeight = 300;
+		// var svgWidth = 500;
+		// var svgHeight = 300;
 		var barPadding = 1; 
 
+		var margin = {top: 20, right: 20, bottom: 30, left: 40},
+				svgWidth = 960 - margin.left - margin.right,
+			    svgHeight = 500 - margin.top - margin.bottom;
 		// Creat SVG element
 		var svg = d3.select("body")
 					.append("svg")
